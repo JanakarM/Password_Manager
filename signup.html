@@ -1,0 +1,85 @@
+
+	<head>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" >
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<script src="jquery-3.3.1.min.js">
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+</script>
+
+  </head>
+
+	<body>
+		<div class='container'>
+		<form class="form-horizontal">
+					<label class="control-label col-sm-2"></label>
+				  <div class="form-group"> 
+				    <div class="col-sm-offset-1 col-sm-10">
+				      <button type="button" onclick='window.history.back()' class="btn btn-default">GoBack</button>
+				    </div>
+				  </div>
+					<div class="form-group">
+					    <label class="control-label col-sm-2">SIGNUP</label>
+					</div>
+					<div class="form-group">
+					    <label class="control-label col-sm-2"></label>
+					</div>
+					<div class="form-group">
+				    <label class="control-label col-sm-2" for="su_email">Email:</label>
+				    <div class="col-sm-10">
+				     <input type="email" class="form-control" id="su_email" placeholder="Enter email"/>
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label class="control-label col-sm-2" for="su_username">Username:</label>
+				    <div class="col-sm-10"> 
+				      <input class="form-control" id="su_username" placeholder="Enter Username"/>
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label class="control-label col-sm-2" for="su_password">Password:</label>
+				    <div class="col-sm-10">
+				      <input type="password" class="form-control" id="su_password" placeholder="Enter Password"/>
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label class="control-label col-sm-2" for="su_confirm_password">Confirm Password:</label>
+				    <div class="col-sm-10"> 
+				      <input type='password' class="form-control" id="su_confirm_password" placeholder="Enter Password"/>
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label class="control-label col-sm-2" for="su_mobile">Mobile Number:</label>
+				    <div class="col-sm-10"> 
+				      <input class="form-control" id="su_mobile" placeholder="Enter Mobile Number"/>
+				    </div>
+				  </div>
+				  <div class="form-group"> 
+				    <div class="col-sm-offset-2 col-sm-10">
+				      <input type="button" class="btn btn-default" onclick='addUser()' value='Save'/>
+				      <button type="reset" class="btn btn-default">Reset</button>
+				    </div>
+				  </div>
+				</form>
+			</div>
+			<script type="text/javascript">
+				function addUser()
+				{
+					var obj = {"email":document.getElementById('su_email').value,"username":document.getElementById('su_username').value,"password":document.getElementById('su_password').value,'mobile':document.getElementById('su_mobile').value};
+					$.ajax({
+						url : 'http://localhost:8080/Password_Manager/AddUser',
+						type : 'POST',
+						data : JSON.stringify(obj),
+						success : function(response)
+								  {
+								  	alert("Response Message : "+response);
+								  }
+					});
+				}
+			</script>
+	</body>
+
+	
